@@ -1,16 +1,30 @@
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Header() {
 	return (
 		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 			<Container>
-				<Navbar.Brand href="#home">Agile Management</Navbar.Brand>
+				<Navbar.Brand>
+					<Link className="nav-item nav-link" to={'/'}>
+						Agile Management
+					</Link>
+				</Navbar.Brand>
+
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 				<Navbar.Collapse id="responsive-navbar-nav">
 					<Nav className="me-auto">
-						<Nav.Link href="#features">Features</Nav.Link>
-						<Nav.Link href="#pricing">Pricing</Nav.Link>
+						<Link
+							className="nav-item nav-link"
+							to={'/add-project-backlog-item'}
+						>
+							Proje İçeriği
+						</Link>
+
+						<Link className="nav-item nav-link" to={'/project'}>
+							Proje
+						</Link>
 						<NavDropdown title="Dropdown" id="collasible-nav-dropdown">
 							<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 							<NavDropdown.Item href="#action/3.2">

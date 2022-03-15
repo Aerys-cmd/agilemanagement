@@ -11,14 +11,22 @@ function ProjectSendAccess() {
 		setProjects(data);
 	}, []);
 
-	console.log(projects);
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const projectId = e.target.project.value;
+		const contributorMail = e.target.contributorMail.value;
 
-	const handleSubmit = () => {};
+		var response = await ProjectService.SendContributorAccess(
+			projectId,
+			contributorMail
+		);
+		console.log(response);
+	};
 	return (
 		<>
 			<Form method="post" onSubmit={handleSubmit}>
-				<Form.Label>Proje İsmi :</Form.Label>
-				<Form.Select>
+				<Form.Label>Proje Seç :</Form.Label>
+				<Form.Select name="project">
 					{projects !== undefined &&
 						projects.map((x, index) => {
 							return (
@@ -28,9 +36,9 @@ function ProjectSendAccess() {
 							);
 						})}
 				</Form.Select>
-				<Form.Label>Proje Açıklaması :</Form.Label>
+				<Form.Label>Katılımcı mail :</Form.Label>
 				<Form.Control
-					as="textarea"
+					name="contributorMail"
 					placeholder="Açıklama"
 					style={{ height: '100px' }}
 				/>

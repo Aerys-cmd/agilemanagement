@@ -11,6 +11,8 @@ import Register from './pages/Shared/Register';
 import VerifyMail from './pages/Shared/VerifyMail';
 import MainPage from './pages/Shared/MainPage';
 import Project from './pages/Panel/Project';
+import AcceptProjectAccess from './pages/Shared/AcceptProjectAccess';
+import AddProjectBacklogItem from './pages/Panel/AddProjectBacklogItem';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -19,8 +21,16 @@ ReactDOM.render(
 				<Route path="login" element={<Login />} />
 				<Route path="register" element={<Register />} />
 				<Route path="verifymail/:userId" element={<VerifyMail />} />
+				<Route
+					path="contributorprojectaccess/:projectId/:contributorMail"
+					element={<AcceptProjectAccess />}
+				/>
 				<Route path="" element={<MainPage />}>
-					<Route path="" element={<Project />} />
+					<Route path="project" element={<Project />} />
+					<Route
+						path="add-project-backlog-item"
+						element={<AddProjectBacklogItem />}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>
