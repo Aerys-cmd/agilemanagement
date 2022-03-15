@@ -7,7 +7,7 @@ function Layout({ children }) {
 	return (
 		<>
 			<Header />
-			<Container>
+			<Container style={{ minHeight: '100vh' }}>
 				<main>{children}</main>
 			</Container>
 			<Footer>
